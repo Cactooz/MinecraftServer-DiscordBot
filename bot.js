@@ -4,7 +4,7 @@ client.login(BOT_TOKEN); //add your own Discord bot token
 
 var request = require('request');
 var mcCMD = '/ping'; //command to trigger
-var mcIP = 'mcserver.net'; //add your Minecraft server IP
+var mcIP = 'mc.hypixel.net'; //add your Minecraft server IP
 var mcPort = 25565; //the port of the server, default it 25565
 
 client.on('message', message => {
