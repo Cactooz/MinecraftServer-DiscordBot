@@ -105,6 +105,7 @@ var mcPort = (process.env.SERVER_PORT);
 ```
 This does so it's only you that can see the Bot Token, Server IP and Server Port.
 
-## Extra
+
+# Extra
 
 Check out the [wiki](https://github.com/TheCactusMonkey/MinecraftServer-DiscordBot/wiki) for help how to configure your bot using Glitch.com or Heroku.com
