@@ -2,6 +2,8 @@
 
 This simle Discord bot let's you ping your Minecraft server to see if it's online/offline.
 
+***
+
 # How to host the bot using Glitch.com
 
 * First of all make an account on [Glitch](glitch.com), using GitHub.
@@ -105,6 +107,7 @@ var mcPort = (process.env.SERVER_PORT);
 ```
 This does so it's only you that can see the Bot Token, Server IP and Server Port.
 
+***
 
 # Extra
 
