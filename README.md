@@ -4,7 +4,10 @@ This simle Discord bot let's you ping your Minecraft server to see if it's onlin
 
 Check out the [wiki](https://github.com/TheCactusMonkey/MinecraftServer-DiscordBot/wiki) for more indepth help how to configure your bot and to get some Tips and Tricks how to use the bot.
 
+
 ***
+
+
 # Fast Tutorials
 
 ### How to host the bot using Glitch.com
