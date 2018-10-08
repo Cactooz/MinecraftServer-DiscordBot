@@ -4,6 +4,8 @@ This simle Discord bot let's you ping your Minecraft server to see if it's onlin
 
 Check out the [wiki](https://github.com/TheCactusMonkey/MinecraftServer-DiscordBot/wiki) for more indepth help how to configure your bot using Glitch.com and/or Heroku.com
 
+Invite your bot using this link: https://discordapp.com/oauth2/authorize?client_id=BOT-ID&scope=bot&permissions=76800 (&permissions=76800 is not needed).
+
 ***
 
 # How to host the bot using Glitch.com
