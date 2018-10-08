@@ -2,13 +2,12 @@
 
 This simle Discord bot let's you ping your Minecraft server to see if it's online/offline.
 
-Check out the [wiki](https://github.com/TheCactusMonkey/MinecraftServer-DiscordBot/wiki) for more indepth help how to configure your bot using Glitch.com and/or Heroku.com
-
-Invite your bot using this link: https://discordapp.com/oauth2/authorize?client_id=BOT-ID&scope=bot&permissions=76800 (**&permissions=76800** is not needed). Don't forget to change the id to your BOT-ID!
+Check out the [wiki](https://github.com/TheCactusMonkey/MinecraftServer-DiscordBot/wiki) for more indepth help how to configure your bot and to get some Tips and Tricks how to use the bot.
 
 ***
+# Fast Tutorials
 
-# How to host the bot using Glitch.com
+### How to host the bot using Glitch.com
 
 * Click on **New Project** and then on **hello-express** (simple node app).
 * Disable the option **Refresh App on Changes**.
@@ -76,4 +75,4 @@ setInterval(() => {
 
 ***
 
-# How to host the bot using Heroku.com
+### How to host the bot using Heroku.com
