@@ -15,7 +15,7 @@ Check out the [wiki](https://github.com/TheCactusMonkey/MinecraftServer-DiscordB
 * Click on **New Project** and then on **hello-express** (simple node app).
 * Disable the option **Refresh App on Changes**.
 * Remove the files: **public/client.js**, **public/style.css**, **views/index.html** (and README.md).
-* Now remove everything inside of both **package.json** and **server.js**.
+* Now clear everything inside of both **package.json** and **server.js**.
 * And put this code into **package.json**.
 ```
 {
