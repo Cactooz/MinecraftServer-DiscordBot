@@ -4,9 +4,10 @@ bot.login('BOT_TOKEN'); //Add your own Discord bot token
 
 const prefix = "/" //Bot command prefix
 var request = require('request');
-var CMD = 'PING'; //Command to trigger, keep it uppercase!
+var CMD = 'PING'; //Command to trigger, keep it UPPERCASE!
 var mcIP = 'mc.hypixel.net'; //Add your Minecraft server IP
 var mcPort = 25565; //The port of the server, default it 25565
+var serverName = 'Minecraft Server'; //Your server name
 
 //Server ping message
 bot.on('message', message => {
@@ -22,9 +23,9 @@ bot.on('message', message => {
                 return message.reply('Error getting Minecraft server status...');
             }
             body = JSON.parse(body);
-            var status = '__Server Status:__ **Minecraft Server** is currently offline';
+            var status = '__Server Status:__ **' + serverName + '** is currently offline';
             if(body.online) {
-                status = '__Server Status:__ **Minecraft Server** is **online**  -  ';
+                status = '__Server Status:__ **' + serverName + '** is **online**  -  ';
                 if(body.players.now) {
                     status += '**' + body.players.now + '/' + body.players.max + '** players are online!';
                 } else {
