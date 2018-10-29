@@ -20,7 +20,7 @@ client.on('message', message => {
             if(body.online) {
                 status = '__Server Status:__ **Minecraft Server** is **online** - ';
                 if(body.players.now) {
-                    status += '**' + body.players.now + '** players are online!';
+                    status += '**' + body.players.now + '/' + body.players.max + '** players are online!';
                 } else {
                     status += '*Noone are online!*';
                 }
