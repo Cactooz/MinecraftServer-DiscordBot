@@ -1,15 +1,19 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
-client.login(BOT_TOKEN); //add your own Discord bot token
+const bot = new Discord.Client();
+bot.login(BOT_TOKEN); //Add your own Discord bot token
 
-const prefix = "/" //bot command prefix
+const prefix = "/" //Bot command prefix
 var request = require('request');
-var CMD = 'ping'; //command to trigger
-var mcIP = 'mc.hypixel.net'; //add your Minecraft server IP
-var mcPort = 25565; //the port of the server, default it 25565
+var CMD = 'PING'; //Command to trigger, keep it uppercase!
+var mcIP = 'mc.hypixel.net'; //Add your Minecraft server IP
+var mcPort = 25565; //The port of the server, default it 25565
 
-//server ping message
-client.on('message', message => {
+//Server ping message
+bot.on('message', message => {
+    
+    // Variables - Variables make it easy to call things, since it requires less typing.
+    let msg = message.content.toUpperCase(); // This variable takes the message, and turns it all into uppercase so it isn't case sensitive.
+    
     if (message.content === prefix + CMD) {
         var url = 'http://mcapi.us/server/status?ip=' + mcIP + '&port=' + mcPort;
         request(url, function(err, response, body) {
@@ -32,10 +36,7 @@ client.on('message', message => {
     }
 });
 
-//bot status
-bot.user.setStatus('Online')
-
-//bot game displays prefix and command
-client.on("ready"), () => {
-    client.user.setGame(prefix + CMD)
+//Bot Game: displays prefix and command
+bot.on('ready', () => {
+  client.user.setGame(prefix + CMD)
 });
