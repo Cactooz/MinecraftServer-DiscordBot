@@ -18,7 +18,7 @@ client.on('message', message => {
             body = JSON.parse(body);
             var status = '__Server Status:__ **Minecraft Server** is currently offline';
             if(body.online) {
-                status = '__Server Status:__ **Minecraft Server** is **online**  -  ';
+                status = '__Server Status:__ **Minecraft Server** is **online** - ';
                 if(body.players.now) {
                     status += '**' + body.players.now + '/' + body.players.max + '** players are online!';
                 } else {
