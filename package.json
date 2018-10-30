@@ -1,5 +1,5 @@
 {
-  "name": "Server-Status",
+  "name": "server-status",
   "description": "Minecraft server status bot for Discord",
   "version": "0.0.0",
   "main": "bot.js",
