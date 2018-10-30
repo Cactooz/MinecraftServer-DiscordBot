@@ -10,7 +10,7 @@ var mcPort = 25565; //The port of the server, default it 25565
 var serverName = 'Minecraft Server'; //Your server name
 var serverUrl = 'minecraft.net'; //Server website
 var serverLogo = 'https://images-eu.ssl-images-amazon.com/images/I/512dVKB22QL.png'; //Server logo
-var color = 0xFF0000 //Hex color for the embed, use 0x instead of #
+var color = 16711680 //Hex color for the embed, use 0x instead of #
 
 //Server ping message
 bot.on('message', message => {
@@ -31,27 +31,33 @@ bot.on('message', message => {
         status = "Online"
       }
 
-      message.channel.send({
-        embed: {
-          "author": {
-            "name": serverName + "Server Status",
-            "url": serverUrl,
-            "icon_url": serverLogo
+      const embed = {
+        "author": {
+          "name": "serverName + Server Status",
+          "url": "channelUrl",
+          "icon_url": "serverLogo"
+        },
+        "color": color,
+        "fields": [
+          {
+            "name": "Status:",
+            "value": status,
+            "inline": true
           },
-          "color": color,
-          "fields": [
-            {
-              "name": "Status:",
-              "value": status
-            }
-          ],
-          "footer": {
-            "text": "IP: minecraft.net"
+          {
+            "name": "Players Online:",
+            "value": "** body.players.now + / body.players.max **",
+            "inline": true
           }
+        ],
+        "footer": {
+          "text": "IP: minecraft.net"
         }
-      });
+      };
+      channel.send({ embed });
+
     });
-  }
+  };
 });
 
 //Bot Game: displays prefix and command
