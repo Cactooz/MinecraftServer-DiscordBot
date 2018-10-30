@@ -1,31 +1,36 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
-client.login(BOT_TOKEN); //add your own Discord bot token
+const bot = new Discord.Client();
+bot.login('BOT_TOKEN'); //Add your own Discord bot token
 
+const prefix = "/" //Bot command prefix
 var request = require('request');
-var mcCMD = '/ping'; //command to trigger
-var mcIP = 'mc.hypixel.net'; //add your Minecraft server IP
-var mcPort = 25565; //the port of the server, default it 25565
+var CMD = 'PING'; //Command to trigger, keep it UPPERCASE!
+var serverName = 'Minecraft Server'; //Your server name
 
-client.on('message', message => {
-    if (message.content === mcCMD) {
-        var url = 'http://mcapi.us/server/status?ip=' + mcIP + '&port=' + mcPort;
-        request(url, function(err, response, body) {
-            if(err) {
-                console.log(err);
-                return message.reply('Error getting Minecraft server status...');
-            }
-            body = JSON.parse(body);
-            var status = '__Server Status:__ **Minecraft Server** is currently offline';
-            if(body.online) {
-                status = '__Server Status:__ **Minecraft Server** is **online** - ';
-                if(body.players.now) {
-                    status += '**' + body.players.now + '/' + body.players.max + '** players are online!';
-                } else {
-                    status += '*Noone are online!*';
-                }
-            }
-            message.channel.send(status);
-        });
-    }
+bot.on('message', message => {
+  let msg = message.content.toUpperCase();
+  if (message.content === prefix + CMD) {
+    var url = 'http://mcapi.us/server/status?ip=' + mcIP + '&port=' + mcPort;
+    request(url, function (err, response, body) {
+      if (err) {
+        console.log(err);
+        return message.reply('Error getting Minecraft server status...');
+      }
+      body = JSON.parse(body);
+      var status = '__Server Status:__ **' + serverName + '** is currently offline';
+      if (body.online) {
+        status = '__Server Status:__ **' + serverName + '** is **online**  -  ';
+        if (body.players.now) {
+          status += '**' + body.players.now + '/' + body.players.max + '** players are online!';
+        } else {
+          status += '*Noone are online!*';
+        }
+      }
+      message.channel.send(status);
+    });
+  }
+});
+
+bot.on('ready', () => {
+  client.user.setActivity(prefix + CMD)
 });
