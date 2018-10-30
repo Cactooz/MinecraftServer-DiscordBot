@@ -73,5 +73,5 @@ bot.on('message', message => {
 
 //Bot Game: displays prefix and command
 bot.on('ready', () => {
-  client.user.setActivity(prefix + CMD)
+  bot.user.setActivity(prefix + CMD)
 });
