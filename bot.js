@@ -46,7 +46,7 @@ bot.on('message', message => {
           },
           {
             "name": "Players Online:",
-            "value": "** body.players.now + / body.players.max **",
+            "value": "** body.players.now + / + body.players.max **",
             "inline": true
           }
         ],
