@@ -8,12 +8,14 @@ var CMD = 'PING'; //Command to trigger, keep it UPPERCASE!
 var mcIP = 'mc.hypixel.net'; //Add your Minecraft server IP
 var mcPort = 25565; //The port of the server, default it 25565
 var serverName = 'Minecraft Server'; //Your server name
+var serverUrl = 'minecraft.net'; //Server website
+var serverLogo = 'https://images-eu.ssl-images-amazon.com/images/I/512dVKB22QL.png'; //Server logo
+var color = '0xFF0000' //Hex color for the embed, use 0x instead of #
 
 //Server ping message
 bot.on('message', message => {
 
-  // Variables - Variables make it easy to call things, since it requires less typing.
-  let msg = message.content.toUpperCase(); // This variable takes the message, and turns it all into uppercase so it isn't case sensitive.
+  let msg = message.content.toUpperCase();
 
   if (message.content === prefix + CMD) {
     var url = 'http://mcapi.us/server/status?ip=' + mcIP + '&port=' + mcPort;
@@ -23,17 +25,49 @@ bot.on('message', message => {
         return message.reply('Error getting Minecraft server status...');
       }
       body = JSON.parse(body);
-      var status = '__Server Status:__ **' + serverName + '** is currently offline';
-      if (body.online) {
-        status = '__Server Status:__ **' + serverName + '** is **online**  -  ';
-        if (body.players.now) {
-          status += '**' + body.players.now + '/' + body.players.max + '** players are online!';
-        } else {
-          status += '*Noone are online!*';
+      var status = embed: {
+        "author": {
+          "name": serverName + "Server Status",
+            "url": channelUrl,
+              "icon_url": serverLogo
+    },
+      "color": color,
+      "fields": [
+        {
+          "name": "Status:",
+          "value": "Offline"
         }
+      ],
+      "footer": {
+        "text": "IP: minecraft.net"
       }
-      message.channel.send(status);
-    });
+      }
+  if (body.online) {
+    status = embed: {
+      "author": {
+        "name": serverName + "Server Status",
+          "url": channelUrl,
+            "icon_url": serverLogo
+      },
+      "color": color,
+        "fields": [
+          {
+            "name": "Status:",
+            "value": "Online",
+            "inline": true
+          }
+          {
+            "name": "Players Online:",
+            "value": "**" body.players.now + "/" body.players.max "**",
+            "inline": true
+          }
+        ],
+          "footer": {
+        "text": "IP: minecraft.net"
+      }
+    }
+    message.channel.send(status);
+  });
   }
 });
 
