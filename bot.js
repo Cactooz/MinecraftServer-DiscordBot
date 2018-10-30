@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-bot.login('NTA2Nzc4MTUzODAxMzUxMTY5.Drnt9g.6d_75Mru9H8X6SBkBHWksXbVwYw'); //Add your own Discord bot token
+bot.login('BOT-TOKEN'); //Add your own Discord bot token
 
 const prefix = "!" //Bot command prefix
 var request = require('request');
