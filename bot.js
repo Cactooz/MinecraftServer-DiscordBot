@@ -5,7 +5,7 @@ bot.login('BOT-TOKEN'); //Add your own Discord bot token
 const prefix = "!" //Bot command prefix
 var request = require('request');
 var CMD = 'PING'; //Command to trigger, keep it UPPERCASE!
-var mcIP = 'mc.hypixel.net'; //Add your Minecraft server IP
+var mcIP = 'mc.abcwdwafdwaf.net'; //Add your Minecraft server IP
 var mcPort = 25565; //The port of the server, default it 25565
 var serverName = 'Minecraft Server'; //Your server name
 var serverUrl = 'https://minecraft.net'; //Server website
@@ -33,7 +33,7 @@ bot.on('message', message => {
 
       const embed = {
         "author": {
-          "name": "serverName + Server Status",
+          "name": serverName + " Server Status",
           "url": "https://minecraft.net",
           "icon_url": "https://images-eu.ssl-images-amazon.com/images/I/512dVKB22QL.png"
         },
@@ -51,7 +51,7 @@ bot.on('message', message => {
           }
         ],
         "footer": {
-          "text": "IP: minecraft.net"
+          "text": mcIP
         }
       };
       message.channel.send({ embed });
