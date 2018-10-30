@@ -24,15 +24,17 @@ bot.on('message', message => {
 
       body = JSON.parse(body);
       var status = "Offline"
+      var color = 16711680
       if (body.online) {
-        status = "Online"
+        status = "Online";
+        color = 65280
       }
       var players = 0
       if (body.players.now) {
         players += body.players.now;
       }
       else {
-        status += 0
+        players += 0
       }
 
       const embed = {
