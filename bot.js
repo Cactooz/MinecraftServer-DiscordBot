@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-bot.login('BOT-TOKEN'); //Add your own Discord bot token
+bot.login('BOT_TOKEN'); //Add your own Discord bot token
 
 //Variables
 const prefix = "!" //Bot command prefix
@@ -11,7 +11,6 @@ var mcPort = 25565; //The port of the server, default it 25565
 var serverName = 'Minecraft Server'; //Your server name
 var serverUrl = "https://minecraft.net"; //Server website
 var serverLogo = "https://images-eu.ssl-images-amazon.com/images/I/512dVKB22QL.png"; //Server logo
-var color = 16711680 //Hex color for the embed, use 0x instead of #
 
 //Server ping message
 bot.on('message', message => {
@@ -65,7 +64,6 @@ bot.on('message', message => {
         }
       };
       message.channel.send({ embed });
-
     });
   };
 });
