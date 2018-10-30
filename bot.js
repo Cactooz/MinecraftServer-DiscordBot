@@ -10,7 +10,6 @@ var mcPort = 25565; //The port of the server, default it 25565
 var serverName = 'Minecraft Server'; //Your server name
 var serverUrl = "https://minecraft.net"; //Server website
 var serverLogo = "https://images-eu.ssl-images-amazon.com/images/I/512dVKB22QL.png"; //Server logo
-var color = 16711680 //Hex color for the embed, use 0x instead of #
 
 bot.on('message', message => {
 
@@ -21,7 +20,7 @@ bot.on('message', message => {
         console.log(err);
         return message.reply('Error getting Minecraft server status...');
       }
-
+      
       body = JSON.parse(body);
       var status = "Offline"
       var color = 16711680
@@ -36,7 +35,7 @@ bot.on('message', message => {
       else {
         players += 0
       }
-
+      
       const embed = {
         "author": {
           "name": serverName + " Server Status",
@@ -61,7 +60,6 @@ bot.on('message', message => {
         }
       };
       message.channel.send({ embed });
-
     });
   };
 });
