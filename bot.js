@@ -34,5 +34,5 @@ bot.on('message', message => {
 });
 
 bot.on('ready', () => {
-  client.user.setActivity(prefix + CMD)
+  bot.user.setActivity(prefix + CMD)
 });
