@@ -8,7 +8,7 @@ var CMD = 'PING'; //Command to trigger, keep it UPPERCASE!
 var mcIP = 'mc.hypixel.net'; //Add your Minecraft server IP
 var mcPort = 25565; //The port of the server, default it 25565
 var serverName = 'Minecraft Server'; //Your server name
-var serverUrl = 'minecraft.net'; //Server website
+var serverUrl = 'https://minecraft.net'; //Server website
 var serverLogo = 'https://images-eu.ssl-images-amazon.com/images/I/512dVKB22QL.png'; //Server logo
 var color = 16711680 //Hex color for the embed, use 0x instead of #
 
@@ -34,8 +34,8 @@ bot.on('message', message => {
       const embed = {
         "author": {
           "name": "serverName + Server Status",
-          "url": "channelUrl",
-          "icon_url": "serverLogo"
+          "url": "https://minecraft.net",
+          "icon_url": "https://images-eu.ssl-images-amazon.com/images/I/512dVKB22QL.png"
         },
         "color": color,
         "fields": [
@@ -54,7 +54,7 @@ bot.on('message', message => {
           "text": "IP: minecraft.net"
         }
       };
-      messsage.channel.send({ embed });
+      message.channel.send({ embed });
 
     });
   };
