@@ -12,6 +12,12 @@ var serverName = 'Minecraft Server'; //Your server name
 var serverUrl = "https://minecraft.net"; //Server website
 var serverLogo = "https://images-eu.ssl-images-amazon.com/images/I/512dVKB22QL.png"; //Server logo
 
+//Split arguments
+var arg = "!ping mc.hypixel.net 25565" //Incomming message
+var host = arg.split(' '); //Split it into an array
+console.log(host[1]); //Define the IP and Port as variables
+console.log(host[2]);
+
 //Server ping message
 bot.on('message', message => {
 
