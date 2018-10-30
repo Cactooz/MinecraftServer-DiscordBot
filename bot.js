@@ -54,7 +54,7 @@ bot.on('message', message => {
           "text": "IP: minecraft.net"
         }
       };
-      channel.send({ embed });
+      messsage.channel.send({ embed });
 
     });
   };
