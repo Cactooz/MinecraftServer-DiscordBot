@@ -5,7 +5,7 @@ bot.login('BOT_TOKEN'); //Add your own Discord bot token
 //Variables
 const prefix = "!" //Bot command prefix
 var request = require('request');
-var CMD = 'ping'; //Command to trigger, keep it UPPERCASE!
+var CMD = 'ping'; //Command to trigger
 var mcIP = 'mc.hypixel.net'; //Add your Minecraft server IP
 var mcPort = 25565; //The port of the server, default it 25565
 var serverName = 'Minecraft Server'; //Your server name
