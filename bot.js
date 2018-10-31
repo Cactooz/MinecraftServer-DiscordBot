@@ -12,11 +12,31 @@ var serverName = 'Minecraft Server'; //Your server name
 var serverUrl = "https://minecraft.net"; //Server website
 var serverLogo = "https://images-eu.ssl-images-amazon.com/images/I/512dVKB22QL.png"; //Server logo
 
+//Set bot game: Prefix + Command
+bot.on('ready', () => {
+  console.log('Logged in as ${bot.user.tag} (${bot.user.id}) on ${bot.guilds.size} servers.') //Console log that the bot is online
+  bot.user.setActivity(prefix + CMD)
+})
+
 //Split arguments
 var arg = "!ping mc.hypixel.net 25565" //Incomming message
 var host = arg.split(' '); //Split it into an array
 console.log(host[1]); //Define the IP and Port as variables
 console.log(host[2]);
+
+function IP(host){
+  console.log(host[1]);
+}
+var mcIP = IP(host)
+
+function port(host){
+  console.log(host[2]);
+}
+var mcPort = port(host)
+
+var url = 'http://mcapi.us/server/status?ip=' + mcIP + '&port=' + mcPort;
+
+console.log(url)
 
 //Server ping message
 bot.on('message', message => {
@@ -72,9 +92,4 @@ bot.on('message', message => {
       message.channel.send({ embed });
     });
   };
-});
-
-//Bot Game: displays prefix and command
-bot.on('ready', () => {
-  bot.user.setActivity(prefix + CMD)
 });
