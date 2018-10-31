@@ -19,20 +19,18 @@ bot.on('ready', () => {
 })
 
 //Split arguments
-var arg = "!ping mc.hypixel.net 25565" //Incomming message
-var host = arg.split(' '); //Split it into an array
-console.log(host[1]); //Define the IP and Port as variables
-console.log(host[2]);
+var arg = "!ping mc.hypixel.net 25565"
+var host = arg.split(' ');
 
 function IP(host){
-  console.log(host[1]);
+  return host[1];
 }
-var mcIP = IP(host)
+let mcIP = IP(host)
 
 function port(host){
-  console.log(host[2]);
+  return host[2];
 }
-var mcPort = port(host)
+let mcPort = host[2]
 
 var url = 'http://mcapi.us/server/status?ip=' + mcIP + '&port=' + mcPort;
 
