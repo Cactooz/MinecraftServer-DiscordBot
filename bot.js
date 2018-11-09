@@ -14,7 +14,7 @@ var serverLogo = "https://images-eu.ssl-images-amazon.com/images/I/512dVKB22QL.p
 
 //Set bot game: Prefix + Command
 bot.on('ready', () => {
-  console.log('Logged in as ${bot.user.tag} (${bot.user.id}) on ${bot.guilds.size} servers.') //Console log that the bot is online
+  console.log(`Bot ready!\nLogged in as ${bot.user.tag} (${bot.user.id}) on ${bot.guilds.size} servers.`) //Console log that the bot is online
   bot.user.setActivity(prefix + CMD)
 })
 
@@ -25,15 +25,17 @@ var host = arg.split(' ');
 function IP(host){
   return host[1];
 }
-let mcIP = IP(host)
-
 function port(host){
   return host[2];
 }
 let mcPort = host[2]
+let mcIP = IP(host)
 
 var url = 'http://mcapi.us/server/status?ip=' + mcIP + '&port=' + mcPort;
 
+//Test to consloe log the vars
+console.log(mcIP)
+console.log(mcPort)
 console.log(url)
 
 //Server ping message
@@ -87,7 +89,7 @@ bot.on('message', message => {
           "text": "IP: " + mcIP
         }
       };
-      message.channel.send({ embed });
+      message.channel.send({embed});
     });
   };
 });
