@@ -1,95 +1,100 @@
+//Require the discord.js module
+const fs = require('fs');
 const Discord = require('discord.js');
-const bot = new Discord.Client();
-bot.login('BOT_TOKEN'); //Add your own Discord bot token
 
-//Variables
-const prefix = "!" //Bot command prefix
-var request = require('request');
-var CMD = 'ping'; //Command to trigger
-var mcIP = 'mc.hypixel.net'; //Add your Minecraft server IP
-var mcPort = 25565; //The port of the server, default it 25565
-var serverName = 'Minecraft Server'; //Your server name
-var serverUrl = "https://minecraft.net"; //Server website
-var serverLogo = "https://images-eu.ssl-images-amazon.com/images/I/512dVKB22QL.png"; //Server logo
+//Require the config.json file
+const { prefix, token } = require('./config.json');
 
-//Set bot game: Prefix + Command
-bot.on('ready', () => {
-  console.log(`Bot ready!\nLogged in as ${bot.user.tag} (${bot.user.id}) on ${bot.guilds.size} servers.`) //Console log that the bot is online
-  bot.user.setActivity(prefix + CMD)
-})
+//Create a new Discord client
+const client = new Discord.Client();
+client.commands = new Discord.Collection();
 
-//Split arguments
-var arg = "!ping mc.hypixel.net 25565"
-var host = arg.split(' ');
+//Checks through all files in the command folder and put all files that end with .js into an array.
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
-function IP(host){
-  return host[1];
+for (const file of commandFiles) {
+	const command = require(`./commands/${file}`);
+
+    //Set a new item in the Collection
+    //With the key as the command name and the value as the exported module
+	client.commands.set(command.name, command);
 }
-function port(host){
-  return host[2];
-}
-let mcPort = host[2]
-let mcIP = IP(host)
 
-var url = 'http://mcapi.us/server/status?ip=' + mcIP + '&port=' + mcPort;
+const cooldowns = new Discord.Collection();
 
-//Test to consloe log the vars
-console.log(mcIP)
-console.log(mcPort)
-console.log(url)
+//Login to Discord with your app's token
+client.login(token);
 
-//Server ping message
-bot.on('message', message => {
+//When the client is ready, run this code:
+//Triggers when the bot - finishes logging in or - reconnects after disconnecting
+client.on('ready', () => {
+    console.log(`Bot ready!\nLogged in as ${bot.user.tag} (${bot.user.id}) on ${bot.guilds.size} servers.`);
+	client.user.setActivity(`${prefix}help`);
+});
 
-  if (message.content === prefix + CMD) {
-    var url = 'http://mcapi.us/server/status?ip=' + mcIP + '&port=' + mcPort;
-    request(url, function (err, response, body) {
-      if (err) {
-        console.log(err);
-        return message.reply('Error getting Minecraft server status...');
-      }
+client.on('message', message => {
 
-//Variables for Online & Player status
-      body = JSON.parse(body);
-      var status = "Offline"
-      var color = 16711680
-      if (body.online) {
-        status = "Online";
-        color = 65280
-      }
-      var players = 0
-      if (body.players.now) {
-        players += body.players.now;
-      }
-      else {
-        players += 0
-      }
+    //Makes sure that the message starts with the prefix and that it's not sent by a bot.
+	if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-//Embed message: Shows online status, players online, IP, website
-      const embed = {
-        "author": {
-          "name": serverName + " Server Status",
-          "url": serverUrl,
-          "icon_url": serverLogo
-        },
-        "color": color,
-        "fields": [
-          {
-            "name": "Status:",
-            "value": status,
-            "inline": true
-          },
-          {
-            "name": "Players Online:",
-            "value": "**" + body.players.now + "** / **" + body.players.max + "**",
-            "inline": true
-          }
-        ],
-        "footer": {
-          "text": "IP: " + mcIP
-        }
-      };
-      message.channel.send({embed});
-    });
-  };
+    //Removes the prefix, extra spaces before and after the message and splitting up the arguments.
+    //Using / +/g instead of ' ' makes so there won't be any problems if there are more than 1 space between words in the command.
+    const args = message.content.slice(prefix.length).trim().split(/ +/);
+	const commandName = args.shift().toLowerCase();
+
+    //Checks for alias for commands
+	const command = client.commands.get(commandName)
+		|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+
+	if (!command) return;
+
+    //Make commands only usable on servers.
+	if (command.guildOnly && message.channel.type !== 'text') {
+		return message.reply(`I can't execute that command inside DMs!`);
+	}
+
+    //Message author if there are no arguments in the command.
+	if (command.args && !args.length) {
+		let reply = `You didn't provide any arguments, ${message.author}!`;
+
+		if (command.usage) {
+			reply += `\nThe proper usage would be: \`${prefix}${command.name} ${command.usage}\``;
+		}
+
+		return message.channel.send(reply);
+	}
+
+    //Checks if the player are on cooldown
+	if (!cooldowns.has(command.name)) {
+		cooldowns.set(command.name, new Discord.Collection());
+	}
+
+	const now = Date.now();
+	const timestamps = cooldowns.get(command.name);
+	const cooldownAmount = (command.cooldown || 3) * 1000;
+
+	if (!timestamps.has(message.author.id)) {
+		timestamps.set(message.author.id, now);
+		setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
+	}
+	else {
+		const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
+
+		if (now < expirationTime) {
+			const timeLeft = (expirationTime - now) / 1000;
+			return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before using the \`${command.name}\` command again.`);
+		}
+
+		timestamps.set(message.author.id, now);
+		setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
+	}
+
+	try {
+		command.execute(message, args);
+	}
+	catch (error) {
+		console.error(error);
+        message.reply('Error while trying to exectute that command!');
+    }
+
 });
