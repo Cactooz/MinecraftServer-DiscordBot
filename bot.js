@@ -27,7 +27,7 @@ client.login(token);
 //When the client is ready, run this code:
 //Triggers when the bot - finishes logging in or - reconnects after disconnecting
 client.on('ready', () => {
-    console.log(`Bot ready!\nLogged in as ${client.user.tag} (${client.user.id}) on ${client.guilds.size} servers.`);
+    console.log(`Bot ready!\nLogged in as ${client.user.tag} (${client.user.id}) on ${client.guilds.size} server(s).`);
 	client.user.setActivity(`${prefix}help`);
 });
 
