@@ -14,7 +14,6 @@ const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('
 
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
-
     //Set a new item in the Collection
     //With the key as the command name and the value as the exported module
 	client.commands.set(command.name, command);
@@ -28,7 +27,7 @@ client.login(token);
 //When the client is ready, run this code:
 //Triggers when the bot - finishes logging in or - reconnects after disconnecting
 client.on('ready', () => {
-    console.log(`Bot ready!\nLogged in as ${bot.user.tag} (${bot.user.id}) on ${bot.guilds.size} servers.`);
+    console.log(`Bot ready!\nLogged in as ${client.user.tag} (${client.user.id}) on ${client.guilds.size} servers.`);
 	client.user.setActivity(`${prefix}help`);
 });
 
