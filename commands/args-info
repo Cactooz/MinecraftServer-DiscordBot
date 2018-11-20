@@ -1,0 +1,14 @@
+module.exports = {
+    name: 'args-info',
+    description: 'Debug command: Information about the arguments provided',
+    args: true,
+    usage: '<random arguments>',
+    guildOnly: true,
+    execute(message, args) {
+        if (args[0] === 'foo') {
+            return message.channel.send('boo');
+        }
+
+        message.channel.send(`**Arguments**: \`${args}\`\n**Arguments length**: \`${args.length}\``);
+    },
+  };
