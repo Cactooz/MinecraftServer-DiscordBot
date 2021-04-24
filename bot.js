@@ -67,3 +67,4 @@ bot.on('message', message => {
 bot.on('ready', () => {
   bot.user.setActivity(prefix + CMD)
 });
+
