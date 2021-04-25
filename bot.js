@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const fetch = require('node-fetch');
 
-const {prefix, command, token, mcIP, mcPort, serverName, serverUrl, serverLogo} = require('./config.json');
+const {prefix, command, token, defaultIP, serverName, serverUrl, serverLogo} = require('./config.json');
 
 bot.login(token);
 
@@ -19,6 +19,10 @@ bot.on('message', message => {
 	const commandName = args.shift().toLowerCase();
 
 	if (commandName === command) {
+
+		const mcIP = args[0] || defaultIP;
+		const mcPort = args[1] || 25565;
+
 		let url = `http://mcapi.us/server/status?ip=${mcIP}&port=${mcPort}`;
 		
 		(async () => {
