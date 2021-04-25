@@ -14,8 +14,8 @@ let serverLogo = "https://images-eu.ssl-images-amazon.com/images/I/512dVKB22QL.p
 bot.on('message', message => {
 
   if (message.content === prefix + CMD) {
-    var url = 'http://mcapi.us/server/status?ip=' + mcIP + '&port=' + mcPort;
-    request(url, function (err, response, body) {
+    let url = 'http://mcapi.us/server/status?ip=' + mcIP + '&port=' + mcPort;
+    request(url, function (err, body) {
       if (err) {
         console.log(err);
         return message.reply('Error getting Minecraft server status...');
