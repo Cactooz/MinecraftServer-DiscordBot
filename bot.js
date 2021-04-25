@@ -28,13 +28,6 @@ bot.on('message', message => {
         status = "Online";
         color = 65280
       }
-      let players = 0
-      if (body.players.now) {
-        players += body.players.now;
-      }
-      else {
-        players += 0
-      }
       
       const embed = {
         "author": {
