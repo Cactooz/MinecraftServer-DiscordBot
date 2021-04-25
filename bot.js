@@ -2,9 +2,9 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const fetch = require('node-fetch');
 
-bot.login('BOT_TOKEN'); //Add your own Discord bot token
 const {prefix, command, token, mcIP, mcPort, serverName, serverUrl, serverLogo} = require('./config.json');
 
+bot.login(token);
 
 bot.on('message', message => {
 
