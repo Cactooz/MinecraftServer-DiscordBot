@@ -4,8 +4,7 @@
 	"prefix": "!",
 	"command": "ping",
 	"token": "BOT-TOKEN",
-	"mcIP": "mc.server.net",
-	"mcPort": "25565",
+	"defaultIP": "mc.server.net",
 	"serverName": "Minecraft Server",
 	"serverUrl": "https://minecraft.net",
 	"serverLogo": "https://images-eu.ssl-images-amazon.com/images/I/512dVKB22QL.png"
