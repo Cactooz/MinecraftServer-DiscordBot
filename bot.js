@@ -3,13 +3,13 @@ const bot = new Discord.Client();
 bot.login('BOT_TOKEN'); //Add your own Discord bot token
 
 const prefix = "/" //Bot command prefix
-var request = require('request');
-var CMD = 'ping'; //Command to trigger
-var mcIP = 'mc.server.net'; //Add your Minecraft server IP
-var mcPort = 25565; //The port of the server, default it 25565
-var serverName = 'Minecraft Server'; //Your server name
-var serverUrl = "https://minecraft.net"; //Server website
-var serverLogo = "https://images-eu.ssl-images-amazon.com/images/I/512dVKB22QL.png"; //Server logo
+const request = require('request');
+const CMD = 'ping'; //Command to trigger
+let mcIP = 'mc.server.net'; //Add your Minecraft server IP
+let mcPort = 25565; //The port of the server, default it 25565
+let serverName = 'Minecraft Server'; //Your server name
+let serverUrl = "https://minecraft.net"; //Server website
+let serverLogo = "https://images-eu.ssl-images-amazon.com/images/I/512dVKB22QL.png"; //Server logo
 
 bot.on('message', message => {
 
@@ -22,13 +22,13 @@ bot.on('message', message => {
       }
       
       body = JSON.parse(body);
-      var status = "Offline"
-      var color = 16711680
+      let status = "Offline"
+      let color = 16711680
       if (body.online) {
         status = "Online";
         color = 65280
       }
-      var players = 0
+      let players = 0
       if (body.players.now) {
         players += body.players.now;
       }
