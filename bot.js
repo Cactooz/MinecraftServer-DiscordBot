@@ -3,6 +3,7 @@ const bot = new Discord.Client();
 const fetch = require('node-fetch');
 
 bot.login('BOT_TOKEN'); //Add your own Discord bot token
+const {prefix, command, token, mcIP, mcPort, serverName, serverUrl, serverLogo} = require('./config.json');
 
 const prefix = "/" //Bot command prefix
 const CMD = 'ping'; //Command to trigger
