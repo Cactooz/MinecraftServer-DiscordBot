@@ -1,17 +1,24 @@
 {
-  "name": "server-status",
-  "description": "Minecraft server status bot for Discord",
-  "version": "2.2.1",
-  "main": "bot.js",
-  "scripts": {
-    "start": "node bot.js"
-  },
-  "engines": {
-    "node": "8.4.0"
-  },
-  "dependencies": {
     "request": "^2.88.0",
     "discord": "^0.8.2",
     "discord.js": "^11.4.2"
-  }
+	"name": "minecraftserverstatus-discordbot",
+	"version": "3.0.0",
+	"description": "Minecraft server status bot for Discord",
+	"main": "bot.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node ."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Cactooz/MinecraftServer-DiscordBot.gi"
+	},
+	"author": "TheCactusMonkey aka Cactooz (Hugo B)",
+	"bugs": {
+		"url": "https://github.com/Cactooz/MinecraftServer-DiscordBot/issues"
+	},
+	"homepage": "https://github.com/Cactooz/MinecraftServer-DiscordBot#readme",
+	"dependencies": {
+	}
 }
