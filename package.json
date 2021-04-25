@@ -1,5 +1,4 @@
 {
-    "discord.js": "^11.4.2"
 	"name": "minecraftserverstatus-discordbot",
 	"version": "3.0.0",
 	"description": "Minecraft server status bot for Discord",
@@ -18,5 +17,6 @@
 	},
 	"homepage": "https://github.com/Cactooz/MinecraftServer-DiscordBot#readme",
 	"dependencies": {
+		"discord.js": "^12.5.3"
 	}
 }
