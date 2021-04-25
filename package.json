@@ -1,7 +1,7 @@
 {
   "name": "server-status",
   "description": "Minecraft server status bot for Discord",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js"
