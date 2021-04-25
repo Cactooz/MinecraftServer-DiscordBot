@@ -1,6 +1,4 @@
 {
-    "request": "^2.88.0",
-    "discord": "^0.8.2",
     "discord.js": "^11.4.2"
 	"name": "minecraftserverstatus-discordbot",
 	"version": "3.0.0",
