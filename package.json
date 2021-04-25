@@ -17,6 +17,7 @@
 	},
 	"homepage": "https://github.com/Cactooz/MinecraftServer-DiscordBot#readme",
 	"dependencies": {
-		"discord.js": "^12.5.3"
+		"discord.js": "^12.5.3",
+		"node-fetch": "^2.6.1"
 	}
 }
