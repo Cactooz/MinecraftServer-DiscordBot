@@ -13,7 +13,7 @@ bot.on('ready', () => {
 
 bot.on('message', message => {
 
-	if (message.content === prefix + command) {
+	if (message.content === prefix + command || !message.author.bot) {
 		let url = `http://mcapi.us/server/status?ip=${mcIP}&port=${mcPort}`;
 		
 		(async () => {
