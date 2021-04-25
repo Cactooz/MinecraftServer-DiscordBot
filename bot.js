@@ -23,7 +23,7 @@ bot.on('message', message => {
 
 				let status = "Offline"
 				let color = 16711680
-				if (body.online) {
+				if (online) {
 					status = "Online";
 					color = 65280
 				}
@@ -43,7 +43,7 @@ bot.on('message', message => {
 					},
 					{
 						"name": "Players Online:",
-						"value": `**${body.players.now}** / **${body.players.max}**`,
+						"value": `**${players.now}** / **${players.max}**`,
 						"inline": true
 					}
 					],
