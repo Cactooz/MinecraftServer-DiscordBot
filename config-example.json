@@ -1,0 +1,12 @@
+{
+	"__comment__": "Rename this file config.json and configure the variables below",
+	"__comment2__": "You can also remove this line and the line above (__comment__ & __comment2__) it if you want to",
+	"prefix": "!",
+	"command": "ping",
+	"token": "BOT-TOKEN",
+	"mcIP": "mc.server.net",
+	"mcPort": "25565",
+	"serverName": "Minecraft Server",
+	"serverUrl": "https://minecraft.net",
+	"serverLogo": "https://images-eu.ssl-images-amazon.com/images/I/512dVKB22QL.png"
+}
