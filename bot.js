@@ -13,50 +13,50 @@ let serverLogo = "https://images-eu.ssl-images-amazon.com/images/I/512dVKB22QL.p
 
 bot.on('message', message => {
 
-  if (message.content === prefix + CMD) {
-    let url = `http://mcapi.us/server/status?ip=${mcIP}&port=${mcPort}`;
-    request(url, function (err, body) {
-      if (err) {
-        console.log(err);
-        return message.reply('Error getting Minecraft server status...');
-      }
-      
-      body = JSON.parse(body);
-      let status = "Offline"
-      let color = 16711680
-      if (body.online) {
-        status = "Online";
-        color = 65280
-      }
-      
-      const embed = {
-        "author": {
-          "name": `${serverName} Server Status`,
-          "url": serverUrl,
-          "icon_url": serverLogo
-        },
-        "color": color,
-        "fields": [
-          {
-            "name": "Status:",
-            "value": status,
-            "inline": true
-          },
-          {
-            "name": "Players Online:",
-            "value": `**${body.players.now}** / **${body.players.max}**`,
-            "inline": true
-          }
-        ],
-        "footer": {
-          "text": `IP: ${mcIP}, Port: ${mcPort}`
-        }
-      };
-      message.channel.send({ embed });
-    });
-  };
+	if (message.content === prefix + CMD) {
+		let url = `http://mcapi.us/server/status?ip=${mcIP}&port=${mcPort}`;
+		request(url, function (err, body) {
+			if (err) {
+				console.log(err);
+				return message.reply('Error getting Minecraft server status...');
+		}
+		
+		body = JSON.parse(body);
+		let status = "Offline"
+		let color = 16711680
+		if (body.online) {
+			status = "Online";
+			color = 65280
+		}
+		
+		const embed = {
+			"author": {
+			"name": `${serverName} Server Status`,
+			"url": serverUrl,
+			"icon_url": serverLogo
+			},
+			"color": color,
+			"fields": [
+			{
+				"name": "Status:",
+				"value": status,
+				"inline": true
+			},
+			{
+				"name": "Players Online:",
+				"value": `**${body.players.now}** / **${body.players.max}**`,
+				"inline": true
+			}
+			],
+			"footer": {
+			"text": `IP: ${mcIP}, Port: ${mcPort}`
+			}
+		};
+		message.channel.send({ embed });
+		});
+	};
 });
 
 bot.on('ready', () => {
-  bot.user.setActivity(prefix + CMD)
+	bot.user.setActivity(prefix + CMD)
 });
