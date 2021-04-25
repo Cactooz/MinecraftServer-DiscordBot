@@ -14,7 +14,7 @@ let serverLogo = "https://images-eu.ssl-images-amazon.com/images/I/512dVKB22QL.p
 bot.on('message', message => {
 
   if (message.content === prefix + CMD) {
-    let url = 'http://mcapi.us/server/status?ip=' + mcIP + '&port=' + mcPort;
+    let url = `http://mcapi.us/server/status?ip=${mcIP}&port=${mcPort}`;
     request(url, function (err, body) {
       if (err) {
         console.log(err);
@@ -38,7 +38,7 @@ bot.on('message', message => {
       
       const embed = {
         "author": {
-          "name": serverName + " Server Status",
+          "name": `${serverName} Server Status`,
           "url": serverUrl,
           "icon_url": serverLogo
         },
@@ -51,12 +51,12 @@ bot.on('message', message => {
           },
           {
             "name": "Players Online:",
-            "value": "**" + body.players.now + "** / **" + body.players.max + "**",
+            "value": `**${body.players.now}** / **${body.players.max}**`,
             "inline": true
           }
         ],
         "footer": {
-          "text": "IP: " + mcIP
+          "text": `IP: ${mcIP}, Port: ${mcPort}`
         }
       };
       message.channel.send({ embed });
