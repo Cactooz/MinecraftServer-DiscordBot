@@ -6,6 +6,11 @@ const {prefix, command, token, mcIP, mcPort, serverName, serverUrl, serverLogo} 
 
 bot.login(token);
 
+bot.on('ready', () => {
+	console.log(`\n${bot.readyAt} - Bot ready and connected!\nLogged in as ${bot.user.tag} (${bot.user.id}) on ${bot.guilds.cache.size} server(s).`);
+	bot.user.setActivity(prefix + command)
+});
+
 bot.on('message', message => {
 
 	if (message.content === prefix + command) {
@@ -53,8 +58,4 @@ bot.on('message', message => {
 			}
 		})();
 	};
-});
-
-bot.on('ready', () => {
-	bot.user.setActivity(prefix + command)
 });
